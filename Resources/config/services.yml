@@ -1,10 +1,16 @@
 services:
-    cloudflare.service_factory:
-        class: Gpenverne\CloudflareBundle\Factory\CloudflareServiceFactory
+    Gpenverne\CloudflareBundle\Factory\CloudflareServiceFactory: ~
 
-    cloudflare.service:
-        class: Gpenverne\CloudflareBundle\Services\CloudflareService
+    cloudflare.service_factory:
+        alias: Gpenverne\CloudflareBundle\Factory\CloudflareServiceFactory
+        deprecated: ~
+
+    Gpenverne\CloudflareBundle\Services\CloudflareService:
         factory: ['@cloudflare.service_factory', createCloudflareService]
         arguments:
             - "%cloudflare.api_email%"
             - "%cloudflare.api_key%"
+
+    cloudflare.service:
+        alias: Gpenverne\CloudflareBundle\Services\CloudflareService
+        deprecated: ~

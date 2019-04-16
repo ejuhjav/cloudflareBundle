@@ -31,7 +31,9 @@ public function registerBundles()
 
 ## Use it
 ```php
-$cloudflareService = $this->container->get('cloudflare.service');
+use Gpenverne\CloudflareBundle\CloudflareService;
+
+$cloudflareService = $this->container->get(CloudflareService::class);
 
 // Retrieve a Cloudflare SDK endpoint
 $userEndpoint = $cloudflareService->get('User');
@@ -45,8 +47,8 @@ $zones = $cloudflareService->zones->listZones();
 // Adapted example from extracted from https://support.cloudflare.com/hc/en-us/articles/115001661191
 $zones = $cloudflareService->zones;
 foreach ($zones->listZones()->result as $zone) {
-    echo "Cache purge for " . $zone->name . ": ";
-    echo $zones->cachePurgeEverything($zone->id) == true ? "successful" : "failed";
+    echo sprintf('Cache purge for %s', $zone->name);
+    echo $zones->cachePurgeEverything($zone->id) ? 'successful' : 'failed';
     echo PHP_EOL;
 
 }
