@@ -5,8 +5,3 @@ services:
     Gpenverne\CloudflareBundle\Services\CloudflareService:
         public: true
         arguments: ["%cloudflare.api_token%"]
-
-    cloudflare.service:
-        alias: Gpenverne\CloudflareBundle\Services\CloudflareService
-        public: true
-        deprecated: ~

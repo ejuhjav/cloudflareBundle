@@ -23,8 +23,6 @@ parameters:
 
 ## Use it
 ```php
-$cloudflareService = $this->container->get('cloudflare.service');
-// Or ...
 $cloudflareService = $this->container->get(Gpenverne\CloudflareBundle\Services\CloudflareService::class)
 // Or inject in your constructors
 
